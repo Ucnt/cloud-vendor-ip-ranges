@@ -13,6 +13,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--update_ranges', action='store_true', help='Force update the ranges')
 parser.add_argument('--no_minimize', action='store_true', help='Minimize the ranges into the fewest possible subnets')
 parser.add_argument('--check_ip_list', default='', help='File with new line separated IPs to check')
+parser.add_argument('--check_ip', default='', help='Single IP to check')
 args = parser.parse_args()
 
 
@@ -51,6 +52,8 @@ if __name__ == "__main__":
         vendor_ranges = json.loads(f.read().strip())
 
     # Check IPs against the list
+    if args.check_ip:
+        is_in_vendor_subnet(ip_address=args.check_ip.strip(), vendor_ranges=vendor_ranges)  
     if args.check_ip_list:
         with open(args.check_ip_list, "r") as f:
             for line in f:

@@ -69,6 +69,10 @@ The recommended use of this tool is to
 
     Force update the IP ranges even if you have a cached version
 
+--check_ip
+
+    Checks a single IP against vendor ranges
+
 --check_ip_list
 
     Newline separated list of IP addresses to check
@@ -88,6 +92,14 @@ python3 get_ips.py
 ```
 # Update the vendor ranges, don't minimize them
 python3 get_ips.py --update --no_minimize
+```
+
+```
+# Check single IP against the vendor ranges
+python3 get_ips.py --check_ip 8.8.8.8
+
+Result:
+8.8.8.8 is in 8.0.0.0/9, belonging to Google
 ```
 
 ```
