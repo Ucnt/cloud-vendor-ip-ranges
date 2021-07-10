@@ -48,16 +48,6 @@ Return: None
 
 This will either return the vendor name (Google, AWS, Azure) if it is in one of their subnets or None if it is not in any vendor range.
 
-# Recommended Application
-
-The recommended use of this tool is to 
-
-1. Run vendor_ip_ranges.get_vendor_ip_ranges() and save the result to a persistent location.
-
-2. Open the saved ranges
-
-3. Use is_in_vendor_subnet(ip_address, vendor_ranges) to lookup if the IP is in a cloud vendor's ranges
-
 # Options
 
 ```
@@ -112,3 +102,13 @@ Example result:
 34.232.136.167 is in 34.224.0.0/12, belonging to AWS
 204.231.197.3 is in 204.231.197.0/24, belonging to Azure
 ```
+
+# What you can do next...
+
+The get_ips.py script is meant to be a "here's an example of what you can do."  
+
+The best way to take advantage of these scripts is to:
+
+- Run vendor_ip_ranges.get_vendor_ip_ranges() on a cronjob and save the resulting json off to a persistent location like Google Cloud Storage or Amazon S3.  
+
+- Pull that json into whatever tool you want and run something like the is_in_vendor_subnet function against the IP
