@@ -1,5 +1,5 @@
 # cloud-vendor-ip-ranges
-Get all published cloud vendor (GCP, AWS, Azure) IP ranges and save them to disk and check if an IP is in one of the ranges
+Get all published cloud vendor (GCP, AWS, Azure) IP ranges, save them to disk, and optional check if an IP is in one of the ranges
 
 # Purpose
 There exist times when you want to search a set of logs or IPs to see if they are from a cloud vendor, e.g. look at inbound network traffic to look for potential scanning.
