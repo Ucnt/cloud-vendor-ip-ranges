@@ -4,8 +4,11 @@ import ipaddress
 from vendor_ip_ranges import get_vendor_ip_ranges
 import json
 import os.path
+
+# File to save cached results to
 vendor_ranges_filename = "vendor_ranges.json"
-# Create arguments for force updating
+
+# Optional arguments
 parser = argparse.ArgumentParser()
 parser.add_argument('--update_ranges', action='store_true', help='Force update the ranges')
 parser.add_argument('--no_minimize', action='store_true', help='Minimize the ranges into the fewest possible subnets')
