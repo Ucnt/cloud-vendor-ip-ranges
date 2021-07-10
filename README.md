@@ -33,7 +33,7 @@ vendor_ip_ranges.get_vendor_ip_ranges() compiles each vendor's IP ranges and ret
 ]
 ```
 
-These json object is then saved to vendor_ranges.json
+This json object is then saved to vendor_ranges.json
 
 Once the ranges are cached, you can call is_in_vendor_subnet to check if an IP is in any cloud vendor subnet.
 
