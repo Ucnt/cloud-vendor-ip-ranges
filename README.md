@@ -46,7 +46,7 @@ Return: None
 
 ```
 
-This will either return the vendor name (Google, AWS, Azure) if it is in one of their subnets or None if it is not in any vendor range.
+This will either return the vendor name (Google, AWS, Azure) if it is in one of their subnets or None if it is not in any vendor ranges.
 
 # Options
 
