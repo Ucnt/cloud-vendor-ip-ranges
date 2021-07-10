@@ -69,17 +69,30 @@ The recommended use of this tool is to
 
     Force update the IP ranges even if you have a cached version
 
---ip_list
+--check_ip_list
 
     Newline separated list of IP addresses to check
 ```
 
-# Execution
-
+# Install requirements
 ```
 pip3 install -r requirements.txt
+```
 
-python3 check_ips.py
+# Execution
+```
+# Get the vendor ranges
+python3 get_ips.py
+```
+
+```
+# Update the vendor ranges, don't minimize them
+python3 get_ips.py --update --no_minimize
+```
+
+```
+# Check IPs against the vendor ranges
+python3 get_ips.py --check_ip_list ip_list.txt
 
 Example result:
 35.244.160.48 is in 35.240.0.0/13, belonging to Google
