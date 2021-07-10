@@ -9,6 +9,7 @@ vendor_ranges_filename = "vendor_ranges.json"
 parser = argparse.ArgumentParser()
 parser.add_argument('--update_ranges', action='store_true', help='Force update the ranges')
 parser.add_argument('--no_minimize', action='store_true', help='Minimize the ranges into the fewest possible subnets')
+parser.add_argument('--ip_list', default='', help='File with new line separated IPs to check')
 args = parser.parse_args()
 
 
@@ -46,10 +47,16 @@ if __name__ == "__main__":
         f = open(vendor_ranges_filename, "r")
         vendor_ranges = json.loads(f.read().strip())
 
-    # Check if IPs are in those ranges
-    is_in_vendor_subnet(ip_address="192.168.0.1", vendor_ranges=vendor_ranges)                                      # Private
-    is_in_vendor_subnet(ip_address="10.0.0.0", vendor_ranges=vendor_ranges)                                         # Private
-    is_in_vendor_subnet(ip_address="35.244.160.48", vendor_ranges=vendor_ranges)                                    # GCP
-    is_in_vendor_subnet(ip_address="2c0f:fb50:ffff:ffff:ffff:ffff:ffff:ffff", vendor_ranges=vendor_ranges)          # GCP
-    is_in_vendor_subnet(ip_address="34.232.136.167", vendor_ranges=vendor_ranges)                                   # AWS    
-    is_in_vendor_subnet(ip_address="204.231.197.3", vendor_ranges=vendor_ranges)                                    # Azure    
+    if args.ip_list:
+        with(args.ip_list, "r") as f:
+            for line in f:
+                if line.strip():
+                    is_in_vendor_subnet(ip_address=line.strip(), vendor_ranges=vendor_ranges)
+    else:
+        # Check if IPs are in those ranges
+        is_in_vendor_subnet(ip_address="192.168.0.1", vendor_ranges=vendor_ranges)                                      # Private
+        is_in_vendor_subnet(ip_address="10.0.0.0", vendor_ranges=vendor_ranges)                                         # Private
+        is_in_vendor_subnet(ip_address="35.244.160.48", vendor_ranges=vendor_ranges)                                    # GCP
+        is_in_vendor_subnet(ip_address="2c0f:fb50:ffff:ffff:ffff:ffff:ffff:ffff", vendor_ranges=vendor_ranges)          # GCP
+        is_in_vendor_subnet(ip_address="34.232.136.167", vendor_ranges=vendor_ranges)                                   # AWS    
+        is_in_vendor_subnet(ip_address="204.231.197.3", vendor_ranges=vendor_ranges)                                    # Azure    

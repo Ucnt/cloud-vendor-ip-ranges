@@ -69,7 +69,7 @@ def get_azure_ranges(no_minimize):
     else:
         # Get the minimal set of ranges that are necessary
         ranges = get_minimum_set_ranges(ranges)
-        return
+        return ranges
 
 
 def get_google_ranges(no_minimize):
@@ -95,7 +95,7 @@ def get_google_ranges(no_minimize):
     else:
         # Get the minimal set of ranges that are necessary
         ranges = get_minimum_set_ranges(ranges)
-        return
+        return ranges
 
 
 def get_aws_ranges(no_minimize):
@@ -124,11 +124,17 @@ def get_aws_ranges(no_minimize):
     else:
         # Get the minimal set of ranges that are necessary
         ranges = get_minimum_set_ranges(ranges)
-        return
+        return ranges
 
 
 def get_vendor_ip_ranges(no_minimize):
     ranges = []
+
+    # Get Google Ranges
+    print("Getting Google ranges")
+    google_ranges = get_google_ranges(no_minimize=no_minimize)
+    ranges.append({"name":"Google", "ranges": google_ranges})
+    print(f"Got {len(google_ranges)} Google ranges")
 
     # Get Azure ranges
     print("Getting Azure ranges")
@@ -136,12 +142,6 @@ def get_vendor_ip_ranges(no_minimize):
     ranges.append({"name":"Azure", "ranges": azure_ranges})
     print(f"Got {len(azure_ranges)} Azure ranges")
     
-    # Get Google Ranges
-    print("Getting Google ranges")
-    google_ranges = get_google_ranges(no_minimize=no_minimize)
-    ranges.append({"name":"Google", "ranges": google_ranges})
-    print(f"Got {len(google_ranges)} Google ranges")
-
     # Get AWS ranges
     print("Getting AWS ranges")
     aws_ranges = get_aws_ranges(no_minimize=no_minimize)

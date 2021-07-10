@@ -68,6 +68,10 @@ The recommended use of this tool is to
 --update 
 
     Force update the IP ranges even if you have a cached version
+
+--ip_list
+
+    Newline separated list of IP addresses to check
 ```
 
 # Execution
