@@ -65,7 +65,7 @@ This will either return the vendor name (Google, AWS, Azure) if it is in one of 
 
 --check_ip_list
 
-    Newline separated list of IP addresses to check
+    Newline separated list file of IP addresses to check
 ```
 
 # Install requirements
