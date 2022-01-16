@@ -50,11 +50,11 @@ def get_minimum_set_ranges(ranges):
 
 
 def get_azure_ranges(no_minimize):
-    r = requests.get("https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519", verify=False)
+    r = requests.get("https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519")
     download_link = re.findall(r"https:\/\/download.microsoft.com\/download\/[a-zA-Z0-9\/_\.\-]+", r.text)
     ranges = []
     if download_link:
-        r2 = requests.get(download_link[0], verify=False)
+        r2 = requests.get(download_link[0])
         r2_json = json.loads(r2.text.strip())
 
         for value in r2_json['values']:
@@ -73,7 +73,7 @@ def get_azure_ranges(no_minimize):
 
 
 def get_google_ranges(no_minimize):
-    r = requests.get("https://www.gstatic.com/ipranges/goog.json", verify=False)
+    r = requests.get("https://www.gstatic.com/ipranges/goog.json")
     r_json = json.loads(r.text.strip())
     
     ranges = []
@@ -99,7 +99,7 @@ def get_google_ranges(no_minimize):
 
 
 def get_aws_ranges(no_minimize):
-    r = requests.get("https://ip-ranges.amazonaws.com/ip-ranges.json", verify=False)
+    r = requests.get("https://ip-ranges.amazonaws.com/ip-ranges.json")
     r_json = json.loads(r.text.strip())
 
     ranges = []
